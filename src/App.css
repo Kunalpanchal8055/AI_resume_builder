@@ -1,0 +1,109 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* ---------------- Force Light Theme Overrides (global) ---------------- */
+:root {
+  --app-bg: #f8fafc;
+  --app-surface: #ffffff;
+  --app-text: #0f172a;
+  --app-border: #e2e8f0;
+}
+
+html, body, #root {
+  background: var(--app-bg) !important;
+  color: var(--app-text) !important;
+}
+
+/* Force cards and sections to light surface */
+.card,
+.response-section,
+.resume-preview-card,
+.resume-modern,
+.resume-classic,
+.resume-minimal,
+.resume-professional,
+.dropdown-menu,
+.navbar,
+.auth-brand,
+.auth-container,
+.container,
+.container-fluid {
+  background: var(--app-surface) !important;
+  color: var(--app-text) !important;
+  border-color: var(--app-border) !important;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06) !important;
+}
+
+/* Inputs */
+.form-control, .form-select, textarea {
+  background: #fff !important;
+  color: var(--app-text) !important;
+  border: 1px solid var(--app-border) !important;
+}
+
+/* Navbar override to keep it light */
+.navbar {
+  background: var(--app-surface) !important;
+  border-bottom: 1px solid var(--app-border) !important;
+}
+
+/* Ensure resume text and headers are readable */
+.resume-name, .resume-content, .resume-section, .resume-classic-header, .prof-section, h1, h2, h3, h4, p {
+  color: var(--app-text) !important;
+}
+
+/* Full-bleed utility */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Remove forced dark-mode rules from media queries */
+@media (prefers-color-scheme: dark) {
+  html, body, #root, .card, .response-section, .form-control, .form-select {
+    background: var(--app-bg) !important;
+    color: var(--app-text) !important;
+    border-color: var(--app-border) !important;
+  }
+}

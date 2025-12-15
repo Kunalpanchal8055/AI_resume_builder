@@ -1,0 +1,820 @@
+/* =========================================================
+   home.css — Modern UI, Animations, Glassmorphism, Dark Mode
+   ========================================================= */
+
+/* ---------------- Root Variables ---------------- */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --muted: #64748b;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --accent: #06b6d4;
+  --vibrant-1: #ff6b6b;
+  --vibrant-2: #ff8c42;
+  --vibrant-3: #7c3aed;
+  --vibrant-4: #06b6d4;
+  --success: #10b981;
+  --success-light: #d1fae5;
+
+  --card-radius: 16px;
+  --container-max: 1100px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------- Base ---------------- */
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: #0f172a; /* darker text on light background */
+}
+
+.container-fluid {
+  background: linear-gradient(180deg, var(--bg) 0%, #f1f5f9 100%);
+  min-height: 100vh;
+}
+
+/* Force form controls to light theme in case other CSS introduces dark styles */
+.form-control, .form-select, textarea {
+  background: #fff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(15,23,42,0.06) !important;
+  box-shadow: none !important;
+}
+
+.custom-card .card-header.bg-primary {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark)) !important;
+  color: white !important;
+}
+
+/* ---------------- Hero Section ---------------- */
+.hero-section {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #7c3aed 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 2rem;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.3);
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.hero-section.full-bleed {
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  animation: slideDown 0.8s ease-out;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffffff 0%, rgba(219,234,254,0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideDown 0.8s ease-out 0.1s both;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  opacity: 0.95;
+  line-height: 1.6;
+  animation: slideDown 0.8s ease-out 0.2s both;
+}
+
+.hero-features {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+  animation: slideDown 0.8s ease-out 0.3s both;
+}
+
+.feature-tag {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0.95rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+  color: white;
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  transition: all 0.3s ease;
+  animation: slideDown 0.8s ease-out 0.4s both;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+}
+
+.hero-cta-btn:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 50vh;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-features {
+    gap: 0.6rem;
+  }
+
+  .feature-tag {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .hero-cta-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+
+/* ---------------- Card ---------------- */
+.card {
+  border: none;
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 25px 40px rgba(0,0,0,0.12);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 1rem;
+}
+
+.card-header .card-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* Optional Glassmorphism */
+.glass-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* ---------------- Forms ---------------- */
+.form-label {
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-label i {
+  color: var(--primary);
+}
+
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+  background: var(--surface);
+}
+
+.form-control:active {
+  transform: scale(0.995);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.form-text {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------------- Buttons ---------------- */
+.btn-primary {
+  background: linear-gradient(135deg, var(--vibrant-4), var(--vibrant-3));
+  border: none;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(59,130,246,0.25);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scale(10);
+  opacity: 0;
+}
+
+.btn-primary:active::after {
+  transform: scale(0);
+  opacity: 0.4;
+  transition: 0s;
+}
+
+/* ---------------- Response Section ---------------- */
+.response-container {
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.response-container .card-header {
+  background: var(--success);
+  color: white;
+}
+
+.gemini-response {
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--surface), #f8fafc);
+}
+
+.response-section {
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.response-section:hover {
+  transform: translateX(6px);
+}
+
+/* ---------------- Loading ---------------- */
+.response-loading {
+  padding: 3rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid #e2e8f0;
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+/* Skeleton Loader */
+.skeleton {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 25%,
+    #f1f5f9 37%,
+    #e5e7eb 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton 1.4s infinite;
+  margin-bottom: 10px;
+}
+
+/* ---------------- Scrollbar ---------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--accent));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes skeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ---------------- Dark Mode ---------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #020617;
+    --surface: #020617;
+    --muted: #94a3b8;
+  }
+
+  body {
+    background: #020617;
+    color: #e5e7eb;
+  }
+
+  .card,
+  .response-section {
+    background: #020617;
+    background: var(--surface);
+  }
+
+  .form-control,
+
+  /* Full-width container */
+  .container, .container-fluid { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+  .form-select {
+    background: #020617;
+    color: #e5e7eb;
+    border-color: #1e293b;
+  }
+}
+
+/* ---------------- Accessibility ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  /* Dashboard small tweaks */
+  .dashboard-card { padding: 1rem; }
+}
+
+/* Dashboard specific cards and stats */
+.dashboard-card {
+  background: linear-gradient(90deg, rgba(14,165,233,0.06), rgba(124,58,237,0.03));
+  border: 1px solid rgba(15,23,42,0.04);
+  border-radius: 12px;
+}
+.dashboard-card h4 { margin: 0 0 0.5rem 0; }
+.stat-number { font-size: 1.75rem; font-weight: 800; color: var(--primary-dark); }
+.stat-sub { color: var(--muted); font-size: 0.9rem; }
+.saved-resume-item { border: 1px solid rgba(15,23,42,0.04); }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Resume preview and layout stacking */
+  .resume-preview-card .card-body {
+    padding: 1rem !important;
+  }
+
+  .container .row {
+    flex-direction: column;
+  }
+
+  .container .col-lg-10 {
+    width: 100%;
+  }
+
+  .navbar-menu {
+    display: none; /* keep simple mobile layout */
+  }
+
+  .user-name { display: none; }
+}
+
+/* ---------------- Print ---------------- */
+@media print {
+  .hero-section,
+  .btn-primary {
+    display: none !important;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+  }
+}
+
+/* ---------------- Force Light Landing Overrides ---------------- */
+/* Apply only when landing container includes .landing-force-light */
+.landing-force-light .card,
+.landing-force-light .response-section,
+.landing-force-light .resume-preview-card,
+.landing-force-light .resume-modern,
+.landing-force-light .resume-classic,
+.landing-force-light .resume-minimal,
+.landing-force-light .resume-professional,
+.landing-force-light .card-body,
+.landing-force-light .card-header {
+  background: var(--surface) !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+.landing-force-light .resume-name,
+.landing-force-light .resume-content,
+.landing-force-light .resume-section,
+.landing-force-light .resume-classic-header,
+.landing-force-light .prof-section {
+  color: #0f172a !important;
+}
+
+/* Make sure inputs remain light */
+.landing-force-light .form-control,
+.landing-force-light .form-select,
+.landing-force-light textarea {
+  background: #fff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* ==================== RESUME STYLING ==================== */
+
+/* Modern Resume */
+.resume-modern {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: white;
+  color: #1a1a1a;
+  padding: 1.25rem;
+  line-height: 1.5;
+}
+
+.resume-modern .resume-header {
+  margin-bottom: 0.75rem;
+}
+
+.resume-modern .resume-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.resume-modern .resume-contact-info {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #666;
+  flex-wrap: wrap;
+}
+
+.resume-modern .resume-divider {
+  height: 1px;
+  background: #d0d0d0;
+  border: none;
+  margin: 0.75rem 0;
+}
+
+.resume-modern .resume-section {
+  margin-bottom: 0.9rem;
+}
+
+.resume-modern .resume-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 2px solid #e8e8e8;
+  padding-bottom: 0.25rem;
+}
+
+.resume-modern .resume-text {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.resume-modern .resume-experience-block,
+.resume-modern .resume-education-block,
+.resume-modern .resume-skills-block {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Classic Resume */
+.resume-classic {
+  font-family: 'Calibri', 'Arial', sans-serif;
+  background: white;
+  color: #1a1a1a;
+  padding: 1.25rem;
+  line-height: 1.5;
+}
+
+.resume-classic .resume-classic-header {
+  margin-bottom: 0.5rem;
+}
+
+.resume-classic .classic-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.resume-classic .classic-contact {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.resume-classic .classic-divider {
+  height: 2px;
+  background: #000;
+  border: none;
+  margin: 0.5rem 0;
+}
+
+.resume-classic .classic-section {
+  margin-bottom: 0.9rem;
+}
+
+.resume-classic .classic-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem 0;
+}
+
+.resume-classic .classic-text {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.resume-classic .classic-experience-block,
+.resume-classic .classic-education-block,
+.resume-classic .classic-skills-block {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Minimal Resume */
+.resume-minimal {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: white;
+  color: #1a1a1a;
+  padding: 1.25rem;
+  line-height: 1.5;
+}
+
+.resume-minimal .minimal-header {
+  margin-bottom: 0.25rem;
+}
+
+.resume-minimal .minimal-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.resume-minimal .minimal-contact {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.resume-minimal .minimal-divider {
+  height: 1px;
+  background: #d0d0d0;
+  border: none;
+  margin: 0.5rem 0;
+}
+
+.resume-minimal .minimal-section {
+  margin-bottom: 0.75rem;
+}
+
+.resume-minimal .minimal-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 0.35rem 0;
+}
+
+.resume-minimal .minimal-text {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.resume-minimal .minimal-experience-block,
+.resume-minimal .minimal-education-block,
+.resume-minimal .minimal-skills-block {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Professional Resume */
+.resume-professional {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: white;
+  color: #1a1a1a;
+  padding: 1.25rem;
+  line-height: 1.5;
+}
+
+.resume-professional .prof-header {
+  margin-bottom: 0.75rem;
+}
+
+.resume-professional .prof-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: -0.01em;
+}
+
+.resume-professional .prof-contact-line {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #666;
+  flex-wrap: wrap;
+}
+
+.resume-professional .prof-divider {
+  height: 2px;
+  background: #0284c7;
+  border: none;
+  margin: 0.75rem 0;
+}
+
+.resume-professional .prof-section {
+  margin-bottom: 0.9rem;
+}
+
+.resume-professional .prof-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem 0;
+  border-left: 3px solid #0284c7;
+  padding-left: 0.5rem;
+}
+
+.resume-professional .prof-text {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.resume-professional .prof-experience-block,
+.resume-professional .prof-education-block,
+.resume-professional .prof-skills-block {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
